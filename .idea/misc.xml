@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/JIMINFILES/Univ Docs/3/Software Engineering/term/SE_InstagramApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/JIMINFILES/Univ Docs/3/Software Engineering/term/SE_InstagramApp/app/src/main/res/layout/activity_post.xml" value="0.1" />
+        <entry key="..\:/JIMINFILES/Univ Docs/3/Software Engineering/term/SE_InstagramApp/app/src/main/res/layout/activity_register.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
