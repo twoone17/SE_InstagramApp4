@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
@@ -31,7 +32,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postList;
-
+    private Button randomFeed;
     private RecyclerView recyclerView_story;
     private StoryAdapter storyAdapter;
     private List<Story> storyList;

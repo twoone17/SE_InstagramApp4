@@ -6,6 +6,7 @@
         <entry key="..\:/JIMINFILES/Univ Docs/3/Software Engineering/term/SE_InstagramApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/JIMINFILES/Univ Docs/3/Software Engineering/term/SE_InstagramApp/app/src/main/res/layout/activity_post.xml" value="0.1" />
         <entry key="..\:/JIMINFILES/Univ Docs/3/Software Engineering/term/SE_InstagramApp/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/twoon/AndroidStudioProjects/SE_InstagramApp4/app/src/main/res/layout/fragment_home.xml" value="0.17291666666666666" />
       </map>
     </option>
   </component>
@@ -48,7 +49,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
