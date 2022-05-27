@@ -2,8 +2,7 @@ package com.example.instagramapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,7 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.RuntimeExecutionException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -87,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.d("jimin", "task success");
 
                             FirebaseUser firebaseUser = auth.getCurrentUser();
+                            Log.d("jimin", "firebaseUser = " + auth.getCurrentUser().toString());
                             String userID = firebaseUser.getUid();
 
                             reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
@@ -96,6 +100,8 @@ public class RegisterActivity extends AppCompatActivity {
                             map.put("fullname", fullname);
                             map.put("imageurl", "https://firebasestorage.googleapis.com/v0/b/instagramtest-fcbef.appspot.com/o/placeholder.png?alt=media&token=b09b809d-a5f8-499b-9563-5252262e9a49");
                             map.put("bio", "");
+                            Log.d("jimin", "map = " + map);
+
 
                             reference.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -113,6 +119,16 @@ public class RegisterActivity extends AppCompatActivity {
                             });
                         } else {
                             Log.d("jimin", "else로 빠짐");
+                            Log.w("jimin", "createUserWithEmail:failure", task.getException());
+
+                            try {Log.d("jimin", task.getResult().toString());
+                            } catch(RuntimeExecutionException e) {
+                                Log.d("jimin", "else로 빠짐");
+                                Log.d("jimin", "RuntimeExecutionException" + e.getMessage());
+                            } catch (Exception e) {
+                                Log.d("jimin", e.getMessage());
+                            }
+
                             pd.dismiss();
                             Toast.makeText(RegisterActivity.this, "You can't register with this email or password", Toast.LENGTH_SHORT).show();
                         }

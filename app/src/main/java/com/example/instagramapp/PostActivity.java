@@ -5,14 +5,17 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -85,21 +88,26 @@ public class PostActivity extends AppCompatActivity {
         pd.show();
         if (mImageUri != null){
             final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(mImageUri));
+                    + ".jpg");
 
+
+                    Log.d("imagepost", "fileReference : " + fileReference);
+                    Log.d("imagepost", "imgurl : " + mImageUri);
             uploadTask = fileReference.putFile(mImageUri);
             uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                     if (!task.isSuccessful()) {
-                        throw task.getException();
+                            throw task.getException();
                     }
                     return fileReference.getDownloadUrl();
                 }
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
+                    Log.d("imagepost", "onComplete");
                     if (task.isSuccessful()) {
+                        Log.d("imagepost", "isSuccessful");
                         Uri downloadUri = task.getResult();
                         miUrlOk = downloadUri.toString();
 
@@ -121,6 +129,7 @@ public class PostActivity extends AppCompatActivity {
                         finish();
 
                     } else {
+                    Log.d("imagepost", "eslse");
                         Toast.makeText(PostActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
                 }
