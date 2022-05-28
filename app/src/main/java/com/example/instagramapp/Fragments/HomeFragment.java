@@ -12,13 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.instagramapp.Adapter.PostAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.example.instagramapp.Adapter.PostAdapter;
+import com.example.instagramapp.Adapter.PostAdapter_Random;
 import com.example.instagramapp.Adapter.StoryAdapter;
 import com.example.instagramapp.Model.Post;
 import com.example.instagramapp.Model.Story;
@@ -31,21 +32,19 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
+    private PostAdapter_Random postAdapter_Random;
     private List<Post> postList;
-    private Button randomFeed;
     private RecyclerView recyclerView_story;
     private StoryAdapter storyAdapter;
     private List<Story> storyList;
 
     private List<String> followingList;
-
     ProgressBar progress_circular;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
@@ -55,6 +54,18 @@ public class HomeFragment extends Fragment {
         postList = new ArrayList<>();
         postAdapter = new PostAdapter(getContext(), postList);
         recyclerView.setAdapter(postAdapter);
+
+        Button randomFeed =(Button)view.findViewById(R.id.randomFeed);
+
+        randomFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                postAdapter_Random = new PostAdapter_Random(getContext(), postList);
+                recyclerView.setAdapter(postAdapter_Random);
+            }
+        });
+
+        postAdapter_Random = new PostAdapter_Random(getContext(), postList);
 
         recyclerView_story = view.findViewById(R.id.recycler_view_story);
         recyclerView_story.setHasFixedSize(true);

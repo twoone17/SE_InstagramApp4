@@ -22,12 +22,13 @@
                 android:layout_height="wrap_content">
 
                 <Button
+                    android:id="@+id/randomFeed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/randomFeed"
-                    android:text="Random feed"
-                    android:layout_toRightOf="@+id/logo"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="25dp"
+                    android:layout_toLeftOf="@+id/dm"
+                    android:background="@color/white"
+                    android:text="Random feed" />
 
                 <ImageView
                     android:id="@+id/logo"
@@ -39,6 +40,7 @@
                     android:src="@drawable/logo" />
 
                 <ImageView
+                    android:id="@+id/dm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

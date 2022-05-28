@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.example.instagramapp.Adapter.PostAdapter;
+import com.example.instagramapp.Adapter.PostAdapter_Random;
 import com.example.instagramapp.Model.Post;
 import com.example.instagramapp.R;
 
@@ -31,7 +31,7 @@ public class PostDetailFragment extends Fragment {
     String postid;
 
     private RecyclerView recyclerView;
-    private PostAdapter postAdapter;
+    private PostAdapter_Random postAdapter;
     private List<Post> postList;
 
     @Override
@@ -48,7 +48,7 @@ public class PostDetailFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
 
         postList = new ArrayList<>();
-        postAdapter = new PostAdapter(getContext(), postList);
+        postAdapter = new PostAdapter_Random(getContext(), postList);
         recyclerView.setAdapter(postAdapter);
 
         readPost();
